@@ -19,5 +19,17 @@
 
 ### NLT vs Spacy
 * For many common NLP tasks, spacy is much faster and more efficient, at the cost of the user not being able to choose algorithmic implementations.
-    
 
+### Spacy Tokens
+|Tag|Description|
+|:------|:------:|
+|`.text`|The original word text<!-- .element: style="text-align:left;" -->|
+|`.lemma_`|The base form of the word|
+|`.pos_`|The simple part-of-speech tag|
+|`.tag_`|The detailed part-of-speech tag|
+|`.shape_`|The word shape – capitalization, punctuation, digits|
+|`.is_alpha`|Is the token an alpha character?|
+|`.is_stop`|Is the token part of a stop list, i.e. the most common words of the language?|
+
+* For a full list of Syntactic Dependencies visit https://spacy.io/api/annotation#dependency-parsing
+<br>A good explanation of typed dependencies can be found [here](https://nlp.stanford.edu/software/dependencies_manual.pdf)
