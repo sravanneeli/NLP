@@ -18,6 +18,6 @@
 3. It also provides many functionalities, but includes less efficient implementations.
 
 ### NLT vs Spacy
-    For many common NLP tasks, spacy is much faster and more efficient, at the cost of the user not being able to choose algorithmic implementations.
+* For many common NLP tasks, spacy is much faster and more efficient, at the cost of the user not being able to choose algorithmic implementations.
     
 
