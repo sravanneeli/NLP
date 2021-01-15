@@ -55,3 +55,10 @@ ___
 ## Lemmatization
 * In contrast to stemming, lemmatization looks beyond word reduction, and considers a language's full vocabulary to apply a morphological analysis to words.
 * The lemma of 'was' is 'be' and the lemma of 'mice' is 'mouse'. Further, the lemma of 'meeting' might be 'meet' or 'meeting' depending on its use in a sentence.
+* Lemmatization looks surrounding text to determine a given word's parts of speech, it does not categorize phrases.
+
+___
+## Stop Words
+* Words like "a" and "the" appear so frequently that they don't require tagging as thoroughly as nouns, verbs and modifiers.
+* We call these stop words, and they can be filtered from the text to be processed.
+
