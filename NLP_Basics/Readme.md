@@ -33,3 +33,17 @@
 
 * For a full list of Syntactic Dependencies visit https://spacy.io/api/annotation#dependency-parsing
 <br>A good explanation of typed dependencies can be found [here](https://nlp.stanford.edu/software/dependencies_manual.pdf)
+
+___
+## TOKENS
+* Tokens are basic building blocks of a Doc Subject-everythin that helps us understanding the meaning of the text is derived from the tokens and their relationship to one another.
+* <b>Prefix:</b> Character(s) at the beginning <b>(dollar sign, (, ")</b>
+* <b>Suffix:</b> Character(s) at the end <b>(km, ),.!")</b>
+* <b>Infix:</b> Character(s) in between <b>(-, --, /, ...)</b>
+* <b>Exception:</b> Special-case rule to split a string into several tokens or prevent a token from being split when punctuation rules are applied<b>(let's, U.S.)</b>
+___
+## Stemming
+* Often when searching text for a certain keyword, it helps if the search returns variations of the word.
+* For instance, searching for "boat" might also return "boats" and "boating". Here, "boat" would be the stem for (boat, boater, boating, boats).
+* Stemming is a somewhat crude method for cataloging related words; it essentially chops off letters from the end until the stem is reached.
+* This works fairly well in most cases, but unfortunately English has many exceptions where a more sophisticated process is required.
