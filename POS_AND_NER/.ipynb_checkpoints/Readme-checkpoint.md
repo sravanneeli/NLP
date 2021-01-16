@@ -30,8 +30,8 @@ Every token is assigned a POS Tag from the following list:
 <tr><td>X</td><td>other</td><td>*sfpksdpsxmsa*</td></tr>
 <tr><td>SPACE</td><td>space</td></tr>
 
-___
-## Fine-grained Part-of-speech Tags
+
+### Fine-grained Part-of-speech Tags
 Tokens are subsequently given a fine-grained tag as determined by morphology:
 <table>
 <tr><th>POS</th><th>Description</th><th>Fine-grained Tag</th><th>Description</th><th>Morphology</th></tr>
@@ -91,4 +91,31 @@ Tokens are subsequently given a fine-grained tag as determined by morphology:
 <tr><td>X</td><td></td><td>XX</td><td>unknown</td><td></td></tr>
 <tr><td>SPACE</td><td>space</td><td>_SP</td><td>space</td><td></td></tr>
 <tr><td></td><td></td><td>NIL</td><td>missing tag</td><td></td></tr>
+</table>
+
+## Named Entity Recognition(NER)
+* Named Entity Recognition(NER) seeks to locate and classify named entity mentions in unstructured text into pre-defined cateogires such as the person names, organizations, locaions, medical codes, time expressions, quantites, monetary values, percentages, etc.
+
+### NER Tags
+Tags are accessible through the `.label_` property of an entity.
+<table>
+<tr><th>TYPE</th><th>DESCRIPTION</th><th>EXAMPLE</th></tr>
+<tr><td>`PERSON`</td><td>People, including fictional.</td><td>*Fred Flintstone*</td></tr>
+<tr><td>`NORP`</td><td>Nationalities or religious or political groups.</td><td>*The Republican Party*</td></tr>
+<tr><td>`FAC`</td><td>Buildings, airports, highways, bridges, etc.</td><td>*Logan International Airport, The Golden Gate*</td></tr>
+<tr><td>`ORG`</td><td>Companies, agencies, institutions, etc.</td><td>*Microsoft, FBI, MIT*</td></tr>
+<tr><td>`GPE`</td><td>Countries, cities, states.</td><td>*France, UAR, Chicago, Idaho*</td></tr>
+<tr><td>`LOC`</td><td>Non-GPE locations, mountain ranges, bodies of water.</td><td>*Europe, Nile River, Midwest*</td></tr>
+<tr><td>`PRODUCT`</td><td>Objects, vehicles, foods, etc. (Not services.)</td><td>*Formula 1*</td></tr>
+<tr><td>`EVENT`</td><td>Named hurricanes, battles, wars, sports events, etc.</td><td>*Olympic Games*</td></tr>
+<tr><td>`WORK_OF_ART`</td><td>Titles of books, songs, etc.</td><td>*The Mona Lisa*</td></tr>
+<tr><td>`LAW`</td><td>Named documents made into laws.</td><td>*Roe v. Wade*</td></tr>
+<tr><td>`LANGUAGE`</td><td>Any named language.</td><td>*English*</td></tr>
+<tr><td>`DATE`</td><td>Absolute or relative dates or periods.</td><td>*20 July 1969*</td></tr>
+<tr><td>`TIME`</td><td>Times smaller than a day.</td><td>*Four hours*</td></tr>
+<tr><td>`PERCENT`</td><td>Percentage, including "%".</td><td>*Eighty percent*</td></tr>
+<tr><td>`MONEY`</td><td>Monetary values, including unit.</td><td>*Twenty Cents*</td></tr>
+<tr><td>`QUANTITY`</td><td>Measurements, as of weight or distance.</td><td>*Several kilometers, 55kg*</td></tr>
+<tr><td>`ORDINAL`</td><td>"first", "second", etc.</td><td>*9th, Ninth*</td></tr>
+<tr><td>`CARDINAL`</td><td>Numerals that do not fall under another type.</td><td>*2, Two, Fifty-two*</td></tr>
 </table>
