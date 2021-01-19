@@ -47,7 +47,7 @@ def get_freq(labels, tweets):
     return freq
 
 
-def build_feature_vectors(freq, tweets, labels):
+def build_input_data(freq, tweets, labels):
     data = []
     y_list = list(np.squeeze(labels))
 
@@ -64,8 +64,17 @@ def build_feature_vectors(freq, tweets, labels):
     return data
 
 
+def extract_features(tweets, freq):
+    x = np.zeros((len(tweets), 2))
+    for i, tweet in enumerate(tweets):
+        for word in preprocess_tweet(tweet):
+            x[i, 0] += freq.get((word, 1.0), 0)
+            x[i, 1] += freq.get((word, 0.0), 0)
+    return x
+
+
 def accuracy(y_test, y_predicted):
-    return (y_test == y_predicted).sum() / len(y_predicted)
+    return (y_test == np.squeeze(y_predicted)).sum() / len(y_predicted)
 
 
 def train_model(data):
@@ -77,6 +86,13 @@ def train_model(data):
     y_predicted = lr.predict(X_test)
     acc = accuracy(y_test, y_predicted)
     print(f"Logistic regression model's accuracy = {acc:.4f}")
+    return lr
+
+
+def test_raw_tweet(tweets, freq, model):
+    x = extract_features(tweets, freq)
+    predicted = model.predict(x)
+    return predicted
 
 
 def main():
@@ -86,8 +102,11 @@ def main():
     labels = np.append(np.ones((len(raw_pos_tweets))), np.zeros((len(raw_neg_tweets))))
     clean_tweets = [preprocess_tweet(tweet) for tweet in tweets]
     freq = get_freq(labels, clean_tweets)  # get frequency dictionary of all words/vocab
-    data = np.array(build_feature_vectors(freq, clean_tweets, labels))
-    train_model(data)
+    data = np.array(build_input_data(freq, clean_tweets, labels))
+    model = train_model(data)
+    test_tweets = ["@sravan I am feeling very happy today because I completed my work!!!!!", "I am sad"]
+    labels_pred = test_raw_tweet(test_tweets, freq, model)
+    print(labels_pred)
 
 
 if __name__ == '__main__':

@@ -32,5 +32,5 @@ class LogisticRegression:
     def predict(self, X):
         X = np.append(np.ones((len(X), 1)), X, axis=1)  # Input Feature Matrix with bias
         y_predicted = np.squeeze(sigmoid(np.dot(X, self.theta)))
-        y_predicted = [1 if x > 0.5 else 0 for x in y_predicted]
+        y_predicted = np.array([1 if x > 0.5 else 0 for x in y_predicted])
         return y_predicted
