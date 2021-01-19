@@ -64,12 +64,19 @@ def build_feature_vectors(freq, tweets, labels):
     return data
 
 
+def accuracy(y_test, y_predicted):
+    return (y_test == y_predicted).sum() / len(y_predicted)
+
+
 def train_model(data):
     X, y = data[:, :-1], data[:, -1]
     X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=42, test_size=0.3)
     lr = LogisticRegression(alpha=1e-09, num_iter=1500)
     J, theta = lr.fit(X_train, y_train)
-    print(J, theta)
+    print(f"Loss and parameters after training with Logistic Regression are {J}, {theta}")
+    y_predicted = lr.predict(X_test)
+    acc = accuracy(y_test, y_predicted)
+    print(f"Logistic regression model's accuracy = {acc:.4f}")
 
 
 def main():
