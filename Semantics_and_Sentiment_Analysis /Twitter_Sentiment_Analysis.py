@@ -54,7 +54,7 @@ def accuracy(y_test, y_predicted):
     return (y_test == np.squeeze(y_predicted)).sum() / len(y_predicted)
 
 
-def train_model(data):
+def train_lr(data):
     X, y = data[:, :-1], data[:, -1]
     X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=42, test_size=0.3)
     lr = LogisticRegression(alpha=1e-09, num_iter=1500)
@@ -80,7 +80,7 @@ def main():
     clean_tweets = [preprocess_tweet(tweet) for tweet in tweets]
     freq = get_freq(labels, clean_tweets)  # get frequency dictionary of all words/vocab
     data = np.array(build_input_data(freq, clean_tweets, labels))
-    model = train_model(data)
+    model = train_lr(data)
     test_tweets = ["@sravan I am feeling very happy today because I completed my work!!!!!", "I am sad"]
     labels_pred = test_raw_tweet(test_tweets, freq, model)
     print(labels_pred)
