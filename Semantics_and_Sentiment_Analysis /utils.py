@@ -13,7 +13,7 @@ stemmer = PorterStemmer()  # initialize stemmer
 
 def preprocess_tweet(tweet):
     tweet = re.sub(r'RT[\s]+', '', tweet)  # remove retweet string
-    tweet = re.sub(r'https?:\\.*[\r\n]*', '', tweet)  # remove hyperlinks
+    tweet = re.sub(r'https?:\/\/.*[\r\n]*', '', tweet)  # remove hyperlinks
     tweet = re.sub(r'#', '', tweet)
     tweet_tokens = tokenizer.tokenize(tweet)
     clean_tweet = []
