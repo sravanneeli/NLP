@@ -3,6 +3,7 @@ from nltk.corpus import twitter_samples
 from sklearn.model_selection import train_test_split
 from utils import preprocess_tweet
 from Models.Logistic_Regression import LogisticRegression
+from Models.Naive_Bayes import NaiveBayes
 
 np.random.seed(1)
 
@@ -72,6 +73,16 @@ def test_raw_tweet(tweets, freq, model):
     return predicted
 
 
+def train_nb(tweets, labels):
+    X_train, X_test, y_train, y_test = train_test_split(tweets, labels, random_state=42, test_size=0.3)
+    nb = NaiveBayes()
+    nb.fit(X_train, y_train)
+    print(nb.log_prior, len(nb.log_likelihood))
+    y_pred = nb.predict(X_test)
+    print(accuracy(y_test, y_pred))
+    return nb
+
+
 def main():
     raw_pos_tweets, raw_neg_tweets = load_raw_tweets()  # load tweets from nltk
     tweets = raw_pos_tweets + raw_neg_tweets  # all tweets
@@ -84,6 +95,7 @@ def main():
     test_tweets = ["@sravan I am feeling very happy today because I completed my work!!!!!", "I am sad"]
     labels_pred = test_raw_tweet(test_tweets, freq, model)
     print(labels_pred)
+    nb_model = train_nb(tweets, labels)
 
 
 if __name__ == '__main__':

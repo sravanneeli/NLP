@@ -12,7 +12,7 @@ en_stopwords = stopwords.words('english')  # load stopwords
 stemmer = PorterStemmer()  # initialize stemmer
 
 
-class NaiveBayse:
+class NaiveBayes:
     def __init__(self):
         self.log_likelihood = {}
         self.log_prior = 0
@@ -57,7 +57,7 @@ class NaiveBayse:
     @staticmethod
     def preprocess_text(text):
         tweet = re.sub(r'RT[\s]+', '', text)  # remove retweet string
-        tweet = re.sub(r'https?:\\.*[\r\n]*', '', tweet)  # remove hyperlinks
+        tweet = re.sub(r'https?:\/\/.*[\r\n]*', '', tweet)  # remove hyperlinks
         tweet = re.sub(r'#', '', tweet)
         tweet_tokens = tokenizer.tokenize(tweet)
         clean_tweet = []
@@ -68,3 +68,19 @@ class NaiveBayse:
                 clean_tweet.append(stem_word)
 
         return clean_tweet
+
+    def predict(self, test_X):
+        clean_texts = [self.preprocess_text(text) for text in test_X]
+        y_pred = np.zeros((len(clean_texts)))
+        for i, text in enumerate(clean_texts):
+            p = 0
+            p += self.log_prior
+            for word in text:
+                if word in self.log_likelihood:
+                    p += self.log_likelihood[word]
+            if p > 0:
+                y_pred[i] = 1
+            else:
+                y_pred[i] = 0
+
+        return y_pred
