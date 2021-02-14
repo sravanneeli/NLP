@@ -55,3 +55,4 @@ def cosine_similarity(A, B):
     norma = np.linalg.norm(A)
     normb = np.linalg.norm(B)
     cos = dot / (norma * normb)
+    return cos
