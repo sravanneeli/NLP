@@ -1,0 +1,8 @@
+*.pyc
+Models/.ipynb_checkpoints/*
+NLP_Basics/.ipynb_checkpoints/*
+NLP_with_Deep_Learning/.ipynb_checkpoints/*
+POS_and_NER/.ipynb_checkpoints/*
+Text_Classification/.ipynb_checkpoints/*
+Topic_Modelling/.ipynb_checkpoints/*
+*.pdf
